@@ -1,0 +1,79 @@
+name: Deploy site to GitHub Pages
+
+on:
+  push:
+    branches: [main, "claude/vibrant-gauss-q1MbE"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: site/package-lock.json
+
+      - name: Audit production dependencies
+        run: npm audit --omit=dev --audit-level=high || true
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Compute base path
+        id: basepath
+        run: |
+          REPO_NAME="${GITHUB_REPOSITORY#*/}"
+          # If a CNAME custom domain is set, no base path is needed
+          if [ -f "public/CNAME" ]; then
+            echo "BASE=" >> "$GITHUB_OUTPUT"
+          else
+            echo "BASE=/$REPO_NAME" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build static export
+        env:
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.basepath.outputs.BASE }}
+          NEXT_TELEMETRY_DISABLED: "1"
+        run: npm run build
+
+      - name: Disable Jekyll on Pages
+        run: touch out/.nojekyll
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

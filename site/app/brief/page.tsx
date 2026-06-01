@@ -28,6 +28,14 @@ const AREAS_COMPANY = ["تحت ١٠٠٠ م²", "١٠٠٠–٥٠٠٠ م²", "٥٠
 const AREAS_INDIVIDUAL = ["تحت ١٠٠ م²", "١٠٠–٢٥٠ م²", "٢٥٠–٥٠٠ م²", "أكبر من ٥٠٠ م²"];
 const STAGES = ["النوع", "المشروع", "أنت"];
 
+const MAX_LEN = { name: 80, org: 120, email: 254, phone: 30, location: 120, note: 2000 } as const;
+const EMAIL_RE = /^[^\s@<>"']+@[^\s@<>"']+\.[^\s@<>"']{2,}$/;
+const PHONE_RE = /^[+\d][\d\s().-]{5,29}$/;
+
+function clean(v: string, max: number): string {
+  return v.replace(/[<>]/g, "").slice(0, max);
+}
+
 function BriefForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -69,10 +77,13 @@ function BriefForm() {
 
   const progress = (step + 1) / STAGES.length;
 
+  const emailValid = EMAIL_RE.test(form.email.trim());
+  const phoneValid = form.phone === "" || PHONE_RE.test(form.phone.trim());
+
   const canNext = () => {
     if (step === 0) return !!form.type;
     if (step === 1) return form.project.length > 0 && !!form.area && !!form.timeline;
-    return !!form.name && !!form.email;
+    return form.name.trim().length >= 2 && emailValid && phoneValid;
   };
 
   if (done) {
@@ -125,12 +136,14 @@ function BriefForm() {
                   <label>أنت...</label>
                   <div className="choice-row">
                     <button
+                      type="button"
                       className={"choice " + (form.type === "company" ? "on" : "")}
                       onClick={() => set("type", "company")}
                     >
                       شركة / مطوّر
                     </button>
                     <button
+                      type="button"
                       className={"choice " + (form.type === "individual" ? "on" : "")}
                       onClick={() => set("type", "individual")}
                     >
@@ -145,7 +158,9 @@ function BriefForm() {
                     <label>أين موقع المشروع؟</label>
                     <input
                       value={form.location}
-                      onChange={(e) => set("location", e.target.value)}
+                      onChange={(e) => set("location", clean(e.target.value, MAX_LEN.location))}
+                      maxLength={MAX_LEN.location}
+                      autoComplete="address-level2"
                       placeholder="جدة، حي الزهراء..."
                     />
                   </div>
@@ -208,9 +223,11 @@ function BriefForm() {
                   </label>
                   <textarea
                     value={form.note}
-                    onChange={(e) => set("note", e.target.value)}
+                    onChange={(e) => set("note", clean(e.target.value, MAX_LEN.note))}
+                    maxLength={MAX_LEN.note}
                     placeholder="حدثنا عن الميزانية، الذوق، الإلهام، أو أي شيء يساعدنا."
                   />
+                  <span className="hint">{form.note.length} / {MAX_LEN.note}</span>
                 </div>
               </>
             )}
@@ -221,7 +238,9 @@ function BriefForm() {
                   <label>الاسم الكامل</label>
                   <input
                     value={form.name}
-                    onChange={(e) => set("name", e.target.value)}
+                    onChange={(e) => set("name", clean(e.target.value, MAX_LEN.name))}
+                    maxLength={MAX_LEN.name}
+                    autoComplete="name"
                     placeholder="عبد الله الراشد"
                   />
                 </div>
@@ -230,7 +249,9 @@ function BriefForm() {
                     <label>الجهة</label>
                     <input
                       value={form.org}
-                      onChange={(e) => set("org", e.target.value)}
+                      onChange={(e) => set("org", clean(e.target.value, MAX_LEN.org))}
+                      maxLength={MAX_LEN.org}
+                      autoComplete="organization"
                       placeholder="شركة..."
                     />
                   </div>
@@ -240,17 +261,33 @@ function BriefForm() {
                   <input
                     type="email"
                     value={form.email}
-                    onChange={(e) => set("email", e.target.value)}
+                    onChange={(e) => set("email", clean(e.target.value, MAX_LEN.email))}
+                    maxLength={MAX_LEN.email}
+                    autoComplete="email"
+                    inputMode="email"
                     placeholder="name@company.com"
                   />
+                  {form.email && !emailValid && (
+                    <span className="hint" style={{ color: "#a33" }}>
+                      صيغة البريد غير صحيحة.
+                    </span>
+                  )}
                 </div>
                 <div className="field">
                   <label>الجوال</label>
                   <input
                     value={form.phone}
-                    onChange={(e) => set("phone", e.target.value)}
+                    onChange={(e) => set("phone", clean(e.target.value, MAX_LEN.phone))}
+                    maxLength={MAX_LEN.phone}
+                    autoComplete="tel"
+                    inputMode="tel"
                     placeholder="+966 5x xxx xxxx"
                   />
+                  {form.phone && !phoneValid && (
+                    <span className="hint" style={{ color: "#a33" }}>
+                      صيغة الرقم غير صحيحة.
+                    </span>
+                  )}
                 </div>
               </>
             )}

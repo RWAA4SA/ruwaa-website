@@ -5,7 +5,7 @@ import { Eyebrow } from "@/components/ui";
 import { IconArrow } from "@/components/icons";
 import { listRequests, type StoredRequest } from "@/lib/supabase";
 
-const ADMIN_PASSWORD = "ruwaa-admin-2026";
+const ADMIN_PASSWORD = "Asd1116647221@";
 const UNLOCK_KEY = "ruwaa-admin-unlocked";
 
 function formatDate(value?: string) {

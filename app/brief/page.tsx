@@ -164,12 +164,14 @@ function BriefForm() {
                   <label>أنت...</label>
                   <div className="choice-row">
                     <button
+                      type="button"
                       className={"choice " + (form.type === "company" ? "on" : "")}
                       onClick={() => set("type", "company")}
                     >
                       شركة / مطوّر
                     </button>
                     <button
+                      type="button"
                       className={"choice " + (form.type === "individual" ? "on" : "")}
                       onClick={() => set("type", "individual")}
                     >
@@ -199,6 +201,7 @@ function BriefForm() {
                   <div className="choice-row">
                     {projectsList.map((p) => (
                       <button
+                        type="button"
                         key={p}
                         className={"choice " + (form.project.includes(p) ? "on" : "")}
                         onClick={() => toggleProject(p)}
@@ -215,6 +218,7 @@ function BriefForm() {
                   <div className="choice-row">
                     {areas.map((a) => (
                       <button
+                        type="button"
                         key={a}
                         className={"choice " + (form.area === a ? "on" : "")}
                         onClick={() => set("area", a)}
@@ -230,6 +234,7 @@ function BriefForm() {
                   <div className="choice-row">
                     {TIMELINES.map((t) => (
                       <button
+                        type="button"
                         key={t}
                         className={"choice " + (form.timeline === t ? "on" : "")}
                         onClick={() => set("timeline", t)}
@@ -296,6 +301,7 @@ function BriefForm() {
 
             <div className="brief-actions">
               <button
+                type="button"
                 className="btn-arrow"
                 onClick={() => (step === 0 ? router.push("/") : setStep(step - 1))}
               >
@@ -303,6 +309,7 @@ function BriefForm() {
               </button>
               {step < 2 ? (
                 <button
+                  type="button"
                   className="btn btn-primary"
                   disabled={!canNext()}
                   style={{ opacity: canNext() ? 1 : 0.4 }}
@@ -312,6 +319,7 @@ function BriefForm() {
                 </button>
               ) : (
                 <button
+                  type="button"
                   className="btn btn-primary"
                   disabled={!canNext() || submitting}
                   style={{ opacity: canNext() && !submitting ? 1 : 0.4 }}

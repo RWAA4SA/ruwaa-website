@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Eyebrow } from "@/components/ui";
 import { IconArrow, IconCheck } from "@/components/icons";
+import { submitRequest } from "@/lib/supabase";
 
 type AudienceType = "company" | "individual" | "";
 
@@ -49,6 +50,44 @@ function BriefForm() {
     note: "",
   });
   const [done, setDone] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const buildServiceType = (f: FormState) => {
+    const audience = f.type === "company" ? "شركة / مطوّر" : f.type === "individual" ? "فرد / عائلة" : "";
+    const projects = f.project.join("، ");
+    return [audience, projects].filter(Boolean).join(" — ");
+  };
+
+  const buildMessage = (f: FormState) => {
+    const parts: string[] = [];
+    if (f.org) parts.push(`الجهة: ${f.org}`);
+    if (f.location) parts.push(`الموقع: ${f.location}`);
+    if (f.area) parts.push(`المساحة: ${f.area}`);
+    if (f.timeline) parts.push(`الجدول الزمني: ${f.timeline}`);
+    if (f.note) parts.push(`ملاحظات: ${f.note}`);
+    return parts.join("\n");
+  };
+
+  const handleSubmit = async () => {
+    if (!canNext() || submitting) return;
+    setSubmitting(true);
+    setSubmitError(null);
+    try {
+      await submitRequest({
+        name: form.name,
+        phone: form.phone,
+        email: form.email,
+        service_type: buildServiceType(form),
+        message: buildMessage(form),
+      });
+      setDone(true);
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : "تعذر إرسال النموذج، حاول مرة أخرى.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   useEffect(() => {
     if (hint === "company" || hint === "individual") {
@@ -274,14 +313,19 @@ function BriefForm() {
               ) : (
                 <button
                   className="btn btn-primary"
-                  disabled={!canNext()}
-                  style={{ opacity: canNext() ? 1 : 0.4 }}
-                  onClick={() => canNext() && setDone(true)}
+                  disabled={!canNext() || submitting}
+                  style={{ opacity: canNext() && !submitting ? 1 : 0.4 }}
+                  onClick={handleSubmit}
                 >
-                  أرسل البريف <IconArrow size={14} />
+                  {submitting ? "جارٍ الإرسال..." : "أرسل البريف"} <IconArrow size={14} />
                 </button>
               )}
             </div>
+            {submitError && (
+              <p className="hint" style={{ color: "#c0392b", marginTop: 12 }}>
+                {submitError}
+              </p>
+            )}
           </div>
         </div>
       </section>

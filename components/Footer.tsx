@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CONTACT } from "@/lib/contact";
 
 export function Footer() {
   return (
@@ -20,18 +21,24 @@ export function Footer() {
         <div>
           <h4>التواصل</h4>
           <Link href="/brief">ابدأ مشروعاً</Link>
-          <a href="mailto:hello@ruwaa.studio">hello@ruwaa.studio</a>
-          <a href="tel:+966110000000">+966 11 000 0000</a>
+          <a href={`tel:${CONTACT.phoneTel}`} dir="ltr" style={{ display: "block" }}>
+            {CONTACT.phoneDisplay}
+          </a>
+          <a href={CONTACT.whatsappLink} target="_blank" rel="noopener noreferrer">
+            واتساب
+          </a>
+          <a href="/ruwaa-company-profile.pdf" target="_blank" rel="noopener noreferrer">
+            ملف تعريفي (PDF)
+          </a>
           <span style={{ display: "block", color: "rgba(255,255,255,0.78)", fontSize: 14, paddingBlock: 6 }}>
-            جدة · المدينة المنورة
+            {CONTACT.locations}
           </span>
         </div>
         <div>
           <h4>تابعنا</h4>
-          <a href="#">Instagram</a>
-          <a href="#">Behance</a>
-          <a href="#">LinkedIn</a>
-          <a href="#">Pinterest</a>
+          <a href={CONTACT.whatsappLink} target="_blank" rel="noopener noreferrer">
+            WhatsApp
+          </a>
         </div>
       </div>
       <div className="end">

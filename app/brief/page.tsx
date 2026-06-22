@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Eyebrow } from "@/components/ui";
 import { IconArrow, IconCheck } from "@/components/icons";
 import { submitRequest } from "@/lib/supabase";
+import { CONTACT } from "@/lib/contact";
 
 type AudienceType = "company" | "individual" | "";
 
@@ -121,7 +122,7 @@ function BriefForm() {
           <div className="check"><IconCheck size={26} /></div>
           <h2 className="h-1" style={{ margin: 0 }}>وصلتنا رسالتك.</h2>
           <p className="body-lg" style={{ margin: 0, maxWidth: 480 }}>
-            سنرد خلال يومي عمل على {form.email}. لو الموضوع عاجل، اتصل على +966 11 000 0000.
+            سنرد خلال يومي عمل على {form.email}. لو الموضوع عاجل، تواصل عبر واتساب: <a href={CONTACT.whatsappLink} dir="ltr" style={{ color: "var(--accent-deep)" }}>{CONTACT.phoneDisplay}</a>.
           </p>
           <div style={{ display: "flex", gap: 12, marginTop: 16 }}>
             <Link href="/" className="btn btn-primary">الرئيسية</Link>

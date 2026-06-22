@@ -1,0 +1,1143 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<title>رُواء — الملف التعريفي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Reem+Kufi:wght@400;500;600;700&family=Amiri:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #f3efe9;
+    --paper: #ebe5dc;
+    --ink: #1d1a16;
+    --ink-2: #3d3934;
+    --muted: #756e64;
+    --line: #d6cfc3;
+    --line-2: #e2dcd1;
+    --accent: #8a6a3b;
+    --accent-deep: #5e4824;
+    --sand: #d6c7a8;
+    --black: #14110d;
+    --white: #fbf8f2;
+    --serif: "Amiri", serif;
+    --arabic: "Tajawal", system-ui, sans-serif;
+    --kufi: "Reem Kufi", "Tajawal", sans-serif;
+    --latin: "Inter", system-ui, sans-serif;
+  }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    font-family: var(--arabic);
+    color: var(--ink);
+    background: var(--bg);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    font-feature-settings: "kern", "liga";
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+    display: block;
+  }
+  .page + .page {
+    break-before: page;
+    page-break-before: always;
+  }
+  body > .page:first-child { break-before: avoid; }
+
+  .pad { padding: 22mm 20mm; height: 100%; display: flex; flex-direction: column; }
+
+  .eyebrow {
+    font-family: var(--latin);
+    font-size: 9pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .eyebrow-ar {
+    font-family: var(--arabic);
+    font-size: 10pt;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .italic { font-family: var(--serif); font-style: italic; font-weight: 400; }
+
+  h1.display {
+    font-family: var(--kufi);
+    font-weight: 500;
+    font-size: 64pt;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  h1 {
+    font-family: var(--kufi);
+    font-weight: 500;
+    font-size: 36pt;
+    line-height: 1.05;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+  }
+  h2 {
+    font-family: var(--kufi);
+    font-weight: 500;
+    font-size: 24pt;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+  h3 {
+    font-family: var(--kufi);
+    font-weight: 500;
+    font-size: 14pt;
+    color: var(--ink);
+  }
+  p, li {
+    font-family: var(--arabic);
+    font-size: 11pt;
+    line-height: 1.85;
+    color: var(--ink-2);
+  }
+  .lead {
+    font-family: var(--arabic);
+    font-size: 13pt;
+    line-height: 1.8;
+    color: var(--ink-2);
+  }
+  .small {
+    font-size: 9.5pt;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .rule {
+    height: 1px;
+    background: var(--line);
+    width: 100%;
+    margin: 6mm 0;
+  }
+
+  /* ============ COVER ============ */
+  .cover {
+    background: linear-gradient(170deg, #1b1813 0%, #2a241c 55%, #3a2f23 100%);
+    color: var(--white);
+    padding: 22mm 20mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .cover .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-family: var(--latin);
+    font-size: 9pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+  .cover .top .mark {
+    font-family: var(--kufi);
+    font-weight: 500;
+    font-size: 22pt;
+    color: var(--white);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .cover .hero {
+    margin-top: auto;
+  }
+  .cover .hero .eyebrow { color: var(--sand); }
+  .cover .hero h1 {
+    color: var(--white);
+    font-size: 78pt;
+    line-height: 0.96;
+    margin-top: 8mm;
+  }
+  .cover .hero .italic { color: var(--sand); }
+  .cover .hero p {
+    color: rgba(255,255,255,0.78);
+    font-size: 13pt;
+    margin-top: 10mm;
+    max-width: 130mm;
+    line-height: 1.7;
+  }
+  .cover .end {
+    margin-top: 14mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 6mm;
+    font-family: var(--latin);
+    font-size: 9pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+  .cover .end .v { color: var(--white); font-family: var(--arabic); letter-spacing: 0; text-transform: none; font-size: 11pt; }
+
+  /* ============ PAGE HEADER ============ */
+  .pg-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 4mm;
+    margin-bottom: 8mm;
+    font-family: var(--latin);
+    font-size: 8pt;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .pg-head .mark {
+    font-family: var(--kufi);
+    font-size: 14pt;
+    color: var(--ink);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .pg-foot {
+    margin-top: auto;
+    padding-top: 4mm;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--latin);
+    font-size: 8pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ============ INTRO PAGE ============ */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14mm;
+    flex: 1;
+  }
+  .two-col .pic {
+    background: var(--paper);
+    border-radius: 2pt;
+    overflow: hidden;
+  }
+  .two-col .pic img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .two-col .body h1 { margin-bottom: 8mm; }
+  .two-col .body p { margin-bottom: 4mm; }
+
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 8mm;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .metrics > div {
+    padding: 6mm 4mm;
+    border-left: 1px solid var(--line);
+  }
+  .metrics > div:last-child { border-left: none; }
+  .metrics .num {
+    font-family: var(--kufi);
+    font-size: 26pt;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .metrics .lab {
+    font-size: 9pt;
+    color: var(--muted);
+    margin-top: 2mm;
+    letter-spacing: 0.04em;
+  }
+
+  /* ============ VISION/MISSION ============ */
+  .vm-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10mm;
+    margin-top: 10mm;
+  }
+  .vm-card {
+    background: var(--paper);
+    padding: 10mm 9mm;
+    border-radius: 2pt;
+    border-right: 3pt solid var(--accent);
+    min-height: 90mm;
+  }
+  .vm-card .num {
+    font-family: var(--latin);
+    font-size: 9pt;
+    letter-spacing: 0.22em;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .vm-card h3 { margin: 4mm 0 6mm; font-size: 18pt; }
+  .vm-card p { font-size: 11pt; line-height: 1.85; }
+
+  .values {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6mm;
+    margin-top: 14mm;
+    padding-top: 8mm;
+    border-top: 1px solid var(--line);
+  }
+  .val .n {
+    font-family: var(--latin);
+    font-size: 9pt;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+  }
+  .val .t {
+    font-family: var(--kufi);
+    font-size: 13pt;
+    margin: 3mm 0 2mm;
+    color: var(--ink);
+  }
+  .val .d {
+    font-size: 9.5pt;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ============ SERVICES ============ */
+  .svc-table {
+    margin-top: 8mm;
+    border-top: 1px solid var(--line);
+  }
+  .svc-row {
+    display: grid;
+    grid-template-columns: 14mm 60mm 1fr 32mm;
+    gap: 6mm;
+    padding: 6mm 0;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+  }
+  .svc-row .n {
+    font-family: var(--latin);
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 11pt;
+    letter-spacing: 0.05em;
+  }
+  .svc-row .t {
+    font-family: var(--kufi);
+    font-size: 14pt;
+    color: var(--ink);
+  }
+  .svc-row .d {
+    font-size: 10.5pt;
+    line-height: 1.7;
+    color: var(--ink-2);
+  }
+  .svc-row .meta {
+    font-size: 9pt;
+    color: var(--muted);
+    text-align: left;
+    letter-spacing: 0.04em;
+  }
+
+  /* ============ INTERIOR / ARCH services ============ */
+  .svc-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12mm;
+    margin-bottom: 10mm;
+  }
+  .svc-hero .pic {
+    aspect-ratio: 4 / 5;
+    background: var(--paper);
+    border-radius: 2pt;
+    overflow: hidden;
+  }
+  .svc-hero .pic img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .svc-hero .body p { font-size: 11.5pt; line-height: 1.85; }
+
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6mm 10mm;
+    margin-top: 8mm;
+  }
+  .pillars .pl {
+    border-top: 1pt solid var(--ink);
+    padding-top: 4mm;
+  }
+  .pillars .pl .n {
+    font-family: var(--latin);
+    font-size: 9pt;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    font-weight: 600;
+  }
+  .pillars .pl .t {
+    font-family: var(--kufi);
+    font-size: 13pt;
+    color: var(--ink);
+    margin: 2mm 0 2mm;
+  }
+  .pillars .pl .d {
+    font-size: 10pt;
+    color: var(--ink-2);
+    line-height: 1.7;
+  }
+
+  /* ============ PROCESS ============ */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8mm 10mm;
+    margin-top: 8mm;
+  }
+  .step {
+    background: var(--paper);
+    padding: 9mm 8mm;
+    border-radius: 2pt;
+    border-top: 3pt solid var(--accent);
+  }
+  .step .num {
+    font-family: var(--kufi);
+    font-size: 24pt;
+    color: var(--accent);
+    margin-bottom: 3mm;
+  }
+  .step .t {
+    font-family: var(--kufi);
+    font-size: 16pt;
+    color: var(--ink);
+    margin-bottom: 3mm;
+  }
+  .step .d {
+    font-size: 10.5pt;
+    line-height: 1.75;
+    color: var(--ink-2);
+  }
+
+  /* ============ WHY ============ */
+  .why-list {
+    margin-top: 8mm;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  .why {
+    display: grid;
+    grid-template-columns: 16mm 1fr;
+    gap: 8mm;
+    padding: 6mm 0;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+  }
+  .why .n {
+    font-family: var(--latin);
+    font-size: 22pt;
+    color: var(--accent);
+    font-weight: 500;
+    line-height: 1;
+  }
+  .why .t {
+    font-family: var(--kufi);
+    font-size: 15pt;
+    color: var(--ink);
+    margin-bottom: 2mm;
+  }
+  .why .d {
+    font-size: 10.5pt;
+    line-height: 1.75;
+    color: var(--ink-2);
+  }
+
+  /* ============ PORTFOLIO ============ */
+  .pf-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6mm;
+    margin-top: 6mm;
+  }
+  .pf {
+    border: 1pt solid var(--line);
+    border-radius: 2pt;
+    overflow: hidden;
+    background: var(--paper);
+  }
+  .pf .img {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+  .pf .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .pf .cap {
+    padding: 5mm 5mm 6mm;
+  }
+  .pf .cap .cat {
+    font-family: var(--latin);
+    font-size: 8pt;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .pf .cap .t {
+    font-family: var(--kufi);
+    font-size: 14pt;
+    margin: 2mm 0 2mm;
+    color: var(--ink);
+  }
+  .pf .cap .meta {
+    font-size: 9.5pt;
+    color: var(--muted);
+  }
+
+  /* ============ CONTACT ============ */
+  .contact-page {
+    background: linear-gradient(170deg, #1b1813 0%, #2a241c 55%, #3a2f23 100%);
+    color: var(--white);
+  }
+  .contact-page .pad { color: var(--white); }
+  .contact-page h1 { color: var(--white); }
+  .contact-page p, .contact-page li { color: rgba(255,255,255,0.82); }
+  .contact-page .eyebrow { color: var(--sand); }
+  .contact-page .pg-head { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.55); }
+  .contact-page .pg-head .mark { color: var(--white); }
+  .contact-page .pg-foot { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.55); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14mm;
+    margin-top: 12mm;
+  }
+  .c-block .label {
+    font-family: var(--latin);
+    font-size: 9pt;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sand);
+    margin-bottom: 4mm;
+    font-weight: 600;
+  }
+  .c-block .v {
+    font-family: var(--kufi);
+    font-size: 20pt;
+    color: var(--white);
+    direction: ltr;
+    text-align: right;
+  }
+  .c-block .v.ar { direction: rtl; }
+  .c-block .sub {
+    margin-top: 3mm;
+    color: rgba(255,255,255,0.65);
+    font-size: 10pt;
+  }
+
+  .cta-box {
+    margin-top: 16mm;
+    border: 1pt solid rgba(255,255,255,0.25);
+    padding: 12mm 10mm;
+    border-radius: 2pt;
+    text-align: center;
+  }
+  .cta-box h2 { color: var(--white); margin-bottom: 6mm; font-size: 28pt; }
+  .cta-box p { color: rgba(255,255,255,0.82); font-size: 12pt; max-width: 130mm; margin: 0 auto; }
+  .cta-box .url {
+    margin-top: 8mm;
+    font-family: var(--latin);
+    font-size: 12pt;
+    color: var(--sand);
+    letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============= COVER ============= -->
+<div class="page cover">
+  <div class="top">
+    <div class="mark">رُواء</div>
+    <div>RUWA&apos;A · STUDIO &nbsp;·&nbsp; EST. MMXVI</div>
+  </div>
+
+  <div class="hero">
+    <div class="eyebrow">COMPANY PROFILE · ٢٠٢٦</div>
+    <h1>مساحات<br/><span class="italic">تروى عنها</span> قصة.</h1>
+    <p>
+      استوديو سعودي متخصص في التصميم الداخلي والتخطيط المعماري — لمشاريع المطورين، الشركات، والأفراد الباحثين عن مسكن يستحق الإقامة فيه.
+    </p>
+  </div>
+
+  <div class="end">
+    <div>
+      <div class="v">جدة · المدينة المنورة</div>
+    </div>
+    <div>RUWA&apos;A · INTERIORS &amp; ARCHITECTURE</div>
+  </div>
+</div>
+
+
+<!-- ============= INTRODUCTION ============= -->
+<div class="page">
+  <div class="pad">
+    <div class="pg-head">
+      <div>الفصل الأول</div>
+      <div class="mark">رُواء</div>
+      <div>٠١</div>
+    </div>
+
+    <div class="two-col">
+      <div class="body">
+        <span class="eyebrow-ar">من نحن</span>
+        <h1>استوديو يصنع<br/><span class="italic">المساحات.</span></h1>
+        <p>
+          تأسست رُواء عام ٢٠١٦ في المملكة العربية السعودية بفلسفة بسيطة: المساحة الجيدة ليست ما يُرى — هي ما يُشعَر. على مدى ما يقارب عقد من الزمن، صمّمنا مساحات لأكثر من ١٢٠ مشروعاً يمتدّ من فلل خاصة إلى أبراج سكنية، فنادق، ومجمعات تطوير عقاري في جدة والمدينة المنورة والرياض.
+        </p>
+        <p>
+          نعمل في تقاطع التصميم الداخلي مع التخطيط المعماري، ونؤمن بأن الخامة الصادقة، والإيقاع الهادئ، والتفاصيل المدروسة، هي اللغة التي تتحدث بها المساحات الراقية. كل مشروع نتعامل معه — بصرف النظر عن حجمه — يحصل على نفس مستوى الانتباه، ونفس مستوى الانضباط في الجدول والميزانية.
+        </p>
+        <p>
+          نخدم ثلاثة أنواع من العملاء: المطورون والشركات بمشاريع متعددة الوحدات، والعملاء الأفراد بمنازلهم الخاصة، والقطاع الضيافي بفنادقه ومنتجعاته. وفي كل من هذه القطاعات، نسلّم ملف تصميم متكامل جاهز لمقاول العميل أو لفريق التنفيذ الداخلي.
+        </p>
+      </div>
+      <div class="pic"><img src="../public/assets/portfolio/05.png" alt="فيلا" /></div>
+    </div>
+
+    <div class="metrics">
+      <div><div class="num">١٢٠+</div><div class="lab">مشروع مُصمَّم</div></div>
+      <div><div class="num">٤٨</div><div class="lab">عميل مؤسسي</div></div>
+      <div><div class="num">١٤٠ ألف</div><div class="lab">م² مصممة</div></div>
+      <div><div class="num">٩</div><div class="lab">سنوات خبرة</div></div>
+    </div>
+
+    <div class="pg-foot">
+      <div>RUWA&apos;A · COMPANY PROFILE</div>
+      <div>02</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============= VISION / MISSION ============= -->
+<div class="page">
+  <div class="pad">
+    <div class="pg-head">
+      <div>الفصل الثاني</div>
+      <div class="mark">رُواء</div>
+      <div>٠٢</div>
+    </div>
+
+    <span class="eyebrow-ar">الرؤية والرسالة</span>
+    <h1 style="margin-top:6mm">إيمان<br/><span class="italic">واحد،</span> أربع قيم.</h1>
+
+    <div class="vm-grid">
+      <div class="vm-card">
+        <div class="num">٠١ · VISION</div>
+        <h3>رؤيتنا</h3>
+        <p>
+          أن نصبح المرجع الأول للتصميم الداخلي والمعماري الفاخر في المملكة العربية السعودية — استوديو يحمل العملاء على مساحات تستحق أن تُسكن وتُروى عنها قصة، ويرفع جودة التصميم في كل مشروع نتعامل معه.
+        </p>
+      </div>
+      <div class="vm-card">
+        <div class="num">٠٢ · MISSION</div>
+        <h3>رسالتنا</h3>
+        <p>
+          نصنع مساحات هادئة وراقية بخامات صادقة وتفاصيل دقيقة، ونسلّم ملفات تصميم احترافية وميزانيات شفافة وجداول تُحترم. نعمل كشريك طويل الأمد للمطورين، وكصديق حميم للعملاء الأفراد، وكمصمم بحس فندقي للقطاع الضيافي.
+        </p>
+      </div>
+    </div>
+
+    <div class="values">
+      <div class="val">
+        <div class="n">٠١</div>
+        <div class="t">الهدوء البصري</div>
+        <div class="d">نؤمن بأن الفخامة الحقيقية تأتي من الإقتصاد، لا من الإفراط — لوحة ألوان مقتضبة وخامات صادقة.</div>
+      </div>
+      <div class="val">
+        <div class="n">٠٢</div>
+        <div class="t">الإنضباط</div>
+        <div class="d">جداول دقيقة، ميزانيات شفافة، ولجان توجيه مشتركة. لا مفاجآت بعد توقيع العقد.</div>
+      </div>
+      <div class="val">
+        <div class="n">٠٣</div>
+        <div class="t">المحلية</div>
+        <div class="d">شبكة موردين مختارة في جدة والمدينة المنورة والرياض، ومعرفة عميقة بمعايير البناء السعودية.</div>
+      </div>
+      <div class="val">
+        <div class="n">٠٤</div>
+        <div class="t">التفصيل</div>
+        <div class="d">كل تفصيلة معمارية وكل وصلة بين خامتين تخضع لمراجعة دقيقة قبل الاعتماد.</div>
+      </div>
+    </div>
+
+    <div class="pg-foot">
+      <div>RUWA&apos;A · COMPANY PROFILE</div>
+      <div>03</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============= SERVICES OVERVIEW ============= -->
+<div class="page">
+  <div class="pad">
+    <div class="pg-head">
+      <div>الفصل الثالث</div>
+      <div class="mark">رُواء</div>
+      <div>٠٣</div>
+    </div>
+
+    <span class="eyebrow-ar">خدماتنا</span>
+    <h1 style="margin-top:6mm">ست خدمات،<br/><span class="italic">تحت سقف واحد.</span></h1>
+    <p class="lead" style="margin-top:6mm; max-width: 150mm">
+      نقدّم مظلة خدمات متكاملة تغطي دورة حياة المشروع من المخطط الأول حتى تسليم آخر وحدة — مع مرونة في الباقات تناسب الأفراد والمطورين على حد سواء.
+    </p>
+
+    <div class="svc-table">
+      <div class="svc-row">
+        <div class="n">01</div>
+        <div class="t">تصميم داخلي شامل</div>
+        <div class="d">تصور تصميمي كامل لكل المساحات، اختيار خامات، إعداد لوحات مزاجية، وتسليم ملف تصميم نهائي.</div>
+        <div class="meta">سكني · ضيافة · تجاري</div>
+      </div>
+      <div class="svc-row">
+        <div class="n">02</div>
+        <div class="t">تخطيط معماري</div>
+        <div class="d">تخطيط مساحات وأقسام داخلية، تحسين تدفق الحركة، ومخططات أرضية مدروسة لتعظيم القيمة.</div>
+        <div class="meta">للمطورين والأفراد</div>
+      </div>
+      <div class="svc-row">
+        <div class="n">03</div>
+        <div class="t">حزم تصميم تنفيذية</div>
+        <div class="d">ملف نهائي يضم المناظير ثلاثية الأبعاد، المخططات التنفيذية، وقوائم الخامات — جاهز ليُنفَّذ من قِبل مقاول العميل.</div>
+        <div class="meta">حتى ٦ أشهر</div>
+      </div>
+      <div class="svc-row">
+        <div class="n">04</div>
+        <div class="t">تصميم وحدات نموذجية</div>
+        <div class="d">تصميم وحدات قابلة للتكرار عبر طوابق أو مواقع متعددة، مع ضبط جودة موحَّد ووفرة في وقت التصميم.</div>
+        <div class="meta">للمطورين</div>
+      </div>
+      <div class="svc-row">
+        <div class="n">05</div>
+        <div class="t">هوية مكانية للضيافة</div>
+        <div class="d">تصميم لوبيات، أجنحة، صالات، ومناطق مشتركة بحس فندقي يعزز الانطباع الأول وقيمة المشروع.</div>
+        <div class="meta">فنادق · منتجعات</div>
+      </div>
+      <div class="svc-row">
+        <div class="n">06</div>
+        <div class="t">إعادة تأهيل المباني</div>
+        <div class="d">تجديد مساحات قائمة لرفع كفاءتها التشغيلية وقيمتها السوقية دون توقف العمل.</div>
+        <div class="meta">قطاع تجاري</div>
+      </div>
+    </div>
+
+    <div class="pg-foot">
+      <div>RUWA&apos;A · COMPANY PROFILE</div>
+      <div>04</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============= INTERIOR DESIGN ============= -->
+<div class="page">
+  <div class="pad">
+    <div class="pg-head">
+      <div>الفصل الرابع · أ</div>
+      <div class="mark">رُواء</div>
+      <div>٠٤</div>
+    </div>
+
+    <span class="eyebrow-ar">خدمات التصميم الداخلي</span>
+    <h1 style="margin-top:4mm">المساحة الداخلية،<br/><span class="italic">بإيقاع هادئ.</span></h1>
+
+    <div class="svc-hero">
+      <div class="body">
+        <p style="margin-top:6mm">
+          نصمّم المساحات الداخلية بثلاث طبقات متكاملة: <strong style="font-weight:500">المعماري الداخلي</strong> الذي يُعنى بتقسيم الفراغ والإضاءة المعمارية، و<strong style="font-weight:500">الخامات والتشطيب</strong> التي تحدد ملمس المساحة وقصتها، ثم <strong style="font-weight:500">التأثيث والتفاصيل</strong> التي تُكمل الصورة وتوقّع المشروع.
+        </p>
+        <p>
+          لكل مشروع لوحة خامات مقتصدة من ستة عناصر فقط، نخترها بدقة لخلق هوية موحدة تمتد عبر كل المساحات دون أن تثقلها. هذا الانضباط هو ما يُحوّل التصميم الداخلي من مجرد تأثيث إلى عمل معماري متكامل.
+        </p>
+      </div>
+      <div class="pic"><img src="../public/assets/portfolio/02.png" alt="" /></div>
+    </div>
+
+    <div class="pillars">
+      <div class="pl">
+        <div class="n">01</div>
+        <div class="t">المساحات السكنية</div>
+        <div class="d">شقق وفلل ومجالس بطابع شخصي، نصمّم لأسلوب الحياة لا لقالب جاهز. باقات شفافة من غرفة واحدة إلى فيلا كاملة.</div>
+      </div>
+      <div class="pl">
+        <div class="n">02</div>
+        <div class="t">مساحات الضيافة</div>
+        <div class="d">لوبيات فنادق، أجنحة، صالات تنفيذية، ومطاعم — بحس بصري واضح ووظيفي.</div>
+      </div>
+      <div class="pl">
+        <div class="n">03</div>
+        <div class="t">المكاتب والتجاري</div>
+        <div class="d">بيئات عمل تعكس ثقافة الشركة، مع مرونة تشغيلية وتصميم يدعم الإنتاجية والاجتماعات.</div>
+      </div>
+      <div class="pl">
+        <div class="n">04</div>
+        <div class="t">المعارض والنماذج</div>
+        <div class="d">وحدات بيع نموذجية ومعارض جذابة بصرياً، مدروسة وظيفياً لتسريع وتيرة المبيعات للمطورين.</div>
+      </div>
+    </div>
+
+    <div class="pg-foot">
+      <div>RUWA&apos;A · COMPANY PROFILE</div>
+      <div>05</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============= ARCH PLANNING ============= -->
+<div class="page">
+  <div class="pad">
+    <div class="pg-head">
+      <div>الفصل الرابع · ب</div>
+      <div class="mark">رُواء</div>
+      <div>٠٤</div>
+    </div>
+
+    <span class="eyebrow-ar">خدمات التخطيط المعماري</span>
+    <h1 style="margin-top:4mm">المخطط الذي<br/><span class="italic">يحدد كل ما يأتي.</span></h1>
+
+    <div class="svc-hero">
+      <div class="pic"><img src="../public/assets/portfolio/shot-04.png" alt="" /></div>
+      <div class="body">
+        <p style="margin-top:6mm">
+          المخطط المعماري الجيد لا يُرى — يُعاش. نعمل مع المطورين والمالكين الأفراد على ترجمة الاحتياجات والقيود إلى تخطيط مكاني يحقق التوازن بين الكفاءة التشغيلية، التجربة البصرية، والقيمة السوقية للمشروع.
+        </p>
+        <p>
+          نقدم خدمات التخطيط في ثلاث مستويات: <strong style="font-weight:500">مخطط رئيسي</strong> للمشاريع متعددة المباني، و<strong style="font-weight:500">تخطيط داخلي</strong> للوحدات السكنية والتجارية، ثم <strong style="font-weight:500">دراسات الجدوى المكانية</strong> التي تقيس عائد المساحة قبل التنفيذ.
+        </p>
+      </div>
+    </div>
+
+    <div class="pillars">
+      <div class="pl">
+        <div class="n">01</div>
+        <div class="t">تخطيط رئيسي</div>
+        <div class="d">تصور مكاني متكامل لمشاريع متعددة المباني، يربط الهوية البصرية بكفاءة التشغيل وتدفّق الحركة بين المباني.</div>
+      </div>
+      <div class="pl">
+        <div class="n">02</div>
+        <div class="t">تخطيط داخلي</div>
+        <div class="d">إعادة هندسة المساحات الداخلية لتعظيم الاستفادة، مع تحسين تدفق الحركة وعزل المناطق العامة عن الخاصة.</div>
+      </div>
+      <div class="pl">
+        <div class="n">03</div>
+        <div class="t">دراسات تكثيف</div>
+        <div class="d">دراسة عدد الوحدات الأمثل في المساحة المتاحة، مع موازنة الجودة المعمارية بالعائد الاستثماري للمطور.</div>
+      </div>
+      <div class="pl">
+        <div class="n">04</div>
+        <div class="t">واجهات وأغلفة</div>
+        <div class="d">تصميم أو إعادة تصميم الواجهات الخارجية للمباني والمنازل، بخامات تحترم المناخ وتعزز قيمة العقار.</div>
+      </div>
+    </div>
+
+    <div class="pg-foot">
+      <div>RUWA&apos;A · COMPANY PROFILE</div>
+      <div>06</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============= PROCESS ============= -->
+<div class="page">
+  <div class="pad">
+    <div class="pg-head">
+      <div>الفصل الخامس</div>
+      <div class="mark">رُواء</div>
+      <div>٠٥</div>
+    </div>
+
+    <span class="eyebrow-ar">منهجية العمل</span>
+    <h1 style="margin-top:6mm">أربع مراحل<br/><span class="italic">لا اختصار فيها.</span></h1>
+    <p class="lead" style="margin-top:6mm; max-width: 150mm">
+      نتبع منهجية موثّقة من أربع مراحل، لكل مرحلة مخرجاتها الواضحة ومعايير القبول التي تُعتمد قبل الانتقال إلى التالية. هذا الانضباط هو ما يحمي الجدول والميزانية، ويضمن جودة التسليم.
+    </p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="num">٠١</div>
+        <div class="t">الاستماع</div>
+        <div class="d">حوار مفصّل مع العميل لفهم أسلوب الحياة، أهداف المشروع، الميزانية، والتطلعات البصرية. نخرج بوثيقة متطلبات معتمدة قبل أن نلمس ورقة تصميم.</div>
+      </div>
+      <div class="step">
+        <div class="num">٠٢</div>
+        <div class="t">زيارة الموقع</div>
+        <div class="d">معاينة ميدانية لأخذ المقاسات الدقيقة، تحليل الإضاءة الطبيعية، رصد القيود الإنشائية، وتوثيق الموقع بصور مرجعية عالية الجودة.</div>
+      </div>
+      <div class="step">
+        <div class="num">٠٣</div>
+        <div class="t">الرؤية</div>
+        <div class="d">نقدم رؤية تصميمية أولية بلوحات مزاجية، مخططات أرضية، وخيارات خامات. هذه المرحلة تفتح النقاش وتثبّت الاتجاه قبل التعمق في التفاصيل.</div>
+      </div>
+      <div class="step">
+        <div class="num">٠٤</div>
+        <div class="t">التسليم</div>
+        <div class="d">ملف تصميم متكامل: مناظير ثلاثية الأبعاد، مخططات تنفيذية، قوائم خامات وموردين، ودعم استشاري بعد التسليم لضمان جودة التنفيذ على الأرض.</div>
+      </div>
+    </div>
+
+    <div class="pg-foot">
+      <div>RUWA&apos;A · COMPANY PROFILE</div>
+      <div>07</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============= WHY CHOOSE RUWAA ============= -->
+<div class="page">
+  <div class="pad">
+    <div class="pg-head">
+      <div>الفصل السادس</div>
+      <div class="mark">رُواء</div>
+      <div>٠٦</div>
+    </div>
+
+    <span class="eyebrow-ar">لماذا رُواء</span>
+    <h1 style="margin-top:6mm">ست أسباب<br/><span class="italic">للشراكة معنا.</span></h1>
+
+    <div class="why-list">
+      <div class="why">
+        <div class="n">01</div>
+        <div>
+          <div class="t">تسعة أعوام من الخبرة المحلية</div>
+          <div class="d">نعرف السوق السعودي عن قرب — من معايير البلديات إلى تفضيلات السوق العقاري، ومن شبكة الموردين إلى عقليات العملاء.</div>
+        </div>
+      </div>
+      <div class="why">
+        <div class="n">02</div>
+        <div>
+          <div class="t">منهجية موثّقة لا اجتهاد</div>
+          <div class="d">أربع مراحل بمعايير قبول واضحة، وثائق رسمية في كل مرحلة، ولجان توجيه مشتركة مع العميل. لا اعتماد على الذاكرة.</div>
+        </div>
+      </div>
+      <div class="why">
+        <div class="n">03</div>
+        <div>
+          <div class="t">انضباط في الجدول والميزانية</div>
+          <div class="d">تسليم في الموعد بنسبة تتجاوز ٩٥٪، تقارير شهرية مفصّلة، وميزانيات شفافة بلا تكاليف خفية.</div>
+        </div>
+      </div>
+      <div class="why">
+        <div class="n">04</div>
+        <div>
+          <div class="t">شبكة موردين معتمدة</div>
+          <div class="d">قائمة موردين موصى بهم في جدة والمدينة والرياض لكل خامة، مع روابط ومواصفات جاهزة لمقاولكم — يوفر أسابيع من البحث.</div>
+        </div>
+      </div>
+      <div class="why">
+        <div class="n">05</div>
+        <div>
+          <div class="t">ملفات تصميم قابلة للتنفيذ</div>
+          <div class="d">مخططاتنا التنفيذية مرسومة بمستوى يفهمه مقاول التنفيذ مباشرة، مما يقلل أخطاء التنفيذ ومتاعب التعديلات في الموقع.</div>
+        </div>
+      </div>
+      <div class="why">
+        <div class="n">06</div>
+        <div>
+          <div class="t">شراكة لا صفقة</div>
+          <div class="d">نبقى متواجدين بعد التسليم — استشارات مجانية على الواتساب، وزيارات ميدانية لمتابعة جودة التنفيذ في المراحل الحرجة.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pg-foot">
+      <div>RUWA&apos;A · COMPANY PROFILE</div>
+      <div>08</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============= PORTFOLIO ============= -->
+<div class="page">
+  <div class="pad">
+    <div class="pg-head">
+      <div>الفصل السابع</div>
+      <div class="mark">رُواء</div>
+      <div>٠٧</div>
+    </div>
+
+    <span class="eyebrow-ar">مختارات من الأعمال</span>
+    <h1 style="margin-top:4mm">ست قصص<br/><span class="italic">عن المساحة.</span></h1>
+
+    <div class="pf-grid">
+      <div class="pf">
+        <div class="img"><img src="../public/assets/portfolio/07.png" alt="" /></div>
+        <div class="cap">
+          <div class="cat">HOSPITALITY · ضيافة</div>
+          <div class="t">منتجع اللوز</div>
+          <div class="meta">جدة · ٢٠٢٤ · ٢٤٠٠ م² · ٣٢ غرفة</div>
+        </div>
+      </div>
+      <div class="pf">
+        <div class="img"><img src="../public/assets/portfolio/05.png" alt="" /></div>
+        <div class="cap">
+          <div class="cat">RESIDENTIAL · سكني خاص</div>
+          <div class="t">فيلا المرمر</div>
+          <div class="meta">جدة · ٢٠٢٥ · ٦٢٠ م² · فيلا واحدة</div>
+        </div>
+      </div>
+      <div class="pf">
+        <div class="img"><img src="../public/assets/portfolio/final-55.png" alt="" /></div>
+        <div class="cap">
+          <div class="cat">HOSPITALITY · ضيافة محلية</div>
+          <div class="t">مجلس نجد</div>
+          <div class="meta">المدينة المنورة · ٢٠٢٥ · ٣٢٠ م²</div>
+        </div>
+      </div>
+      <div class="pf">
+        <div class="img"><img src="../public/assets/portfolio/shot-04.png" alt="" /></div>
+        <div class="cap">
+          <div class="cat">COMMERCIAL · تجاري</div>
+          <div class="t">البرج المركزي</div>
+          <div class="meta">جدة · ٢٠٢٤ · ٤٨٠٠ م² · ١٢ طابقاً</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pg-foot">
+      <div>RUWA&apos;A · COMPANY PROFILE</div>
+      <div>09</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============= PORTFOLIO 2 ============= -->
+<div class="page">
+  <div class="pad">
+    <div class="pg-head">
+      <div>الفصل السابع · تابع</div>
+      <div class="mark">رُواء</div>
+      <div>٠٧</div>
+    </div>
+
+    <span class="eyebrow-ar">قصص إضافية</span>
+    <h1 style="margin-top:4mm">تفاصيل<br/><span class="italic">بدقّة الجواهر.</span></h1>
+
+    <div class="pf-grid">
+      <div class="pf">
+        <div class="img"><img src="../public/assets/portfolio/shot-03.png" alt="" /></div>
+        <div class="cap">
+          <div class="cat">RESIDENTIAL · سكني خاص</div>
+          <div class="t">مطبخ مشاري</div>
+          <div class="meta">المدينة المنورة · ٢٠٢٥ · ٤٢ م²</div>
+        </div>
+      </div>
+      <div class="pf">
+        <div class="img"><img src="../public/assets/portfolio/08.png" alt="" /></div>
+        <div class="cap">
+          <div class="cat">HOSPITALITY · ضيافة</div>
+          <div class="t">جناح العافية</div>
+          <div class="meta">جدة · ٢٠٢٤ · ٩٦٠ م² · ٨ غرف علاج</div>
+        </div>
+      </div>
+      <div class="pf">
+        <div class="img"><img src="../public/assets/portfolio/01.png" alt="" /></div>
+        <div class="cap">
+          <div class="cat">RESIDENTIAL TOWER · سكني</div>
+          <div class="t">برج سكني · لوبي وممرات</div>
+          <div class="meta">جدة · ٢٠٢٤</div>
+        </div>
+      </div>
+      <div class="pf">
+        <div class="img"><img src="../public/assets/portfolio/03.png" alt="" /></div>
+        <div class="cap">
+          <div class="cat">RESIDENTIAL · سكني خاص</div>
+          <div class="t">شقة الواحة</div>
+          <div class="meta">جدة · ٢٠٢٥ · ٢٤٠ م²</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pg-foot">
+      <div>RUWA&apos;A · COMPANY PROFILE</div>
+      <div>10</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============= CONTACT ============= -->
+<div class="page contact-page">
+  <div class="pad">
+    <div class="pg-head">
+      <div>الفصل الثامن</div>
+      <div class="mark">رُواء</div>
+      <div>٠٨</div>
+    </div>
+
+    <span class="eyebrow">CONTACT · للتواصل</span>
+    <h1 style="margin-top:4mm; color:var(--white)">احكِ لنا<br/><span class="italic" style="color:var(--sand)">عن مشروعك.</span></h1>
+    <p style="margin-top:6mm; max-width: 150mm; font-size: 12pt">
+      نحب الحديث عن المشاريع المبكرة. ابعث لنا فكرتك أو موقعك أو حتى صورة لمساحة تلهمك — نرتّب لك مكالمة استشارية أولية مجانية، ونرسل لك تصوراً مبدئياً خلال ثلاثة أيام عمل.
+    </p>
+
+    <div class="contact-grid">
+      <div class="c-block">
+        <div class="label">PHONE · WHATSAPP</div>
+        <div class="v">+966 53 504 3173</div>
+        <div class="sub">للاتصال أو الواتساب — متاحون من السبت إلى الخميس، ٩ صباحاً إلى ٧ مساءً</div>
+      </div>
+      <div class="c-block">
+        <div class="label">LOCATIONS · المواقع</div>
+        <div class="v ar">جدة &nbsp;·&nbsp; المدينة المنورة</div>
+        <div class="sub">نخدم كذلك مشاريع في الرياض، الخبر، وأبها بالترتيب المسبق</div>
+      </div>
+      <div class="c-block">
+        <div class="label">WEBSITE · الموقع</div>
+        <div class="v" style="font-family: var(--latin); font-size: 16pt">ruwaa-website.vercel.app</div>
+        <div class="sub">ابدأ نموذج طلب مشروع في أربع دقائق على الموقع</div>
+      </div>
+      <div class="c-block">
+        <div class="label">HOURS · ساعات العمل</div>
+        <div class="v ar" style="font-size: 16pt">السبت — الخميس</div>
+        <div class="sub">٩:٠٠ صباحاً — ٧:٠٠ مساءً (بتوقيت الرياض)</div>
+      </div>
+    </div>
+
+    <div class="cta-box">
+      <span class="eyebrow">START A PROJECT</span>
+      <h2 style="margin-top:5mm">أربع دقائق <span class="italic">تكفي.</span></h2>
+      <p>
+        املأ نموذج البريف على موقعنا، وسنرسل لك تصوراً مبدئياً وميزانية أولية خلال ثلاثة أيام عمل.
+      </p>
+      <div class="url">ruwaa-website.vercel.app/brief</div>
+    </div>
+
+    <div class="pg-foot">
+      <div>© 2026 RUWA&apos;A INTERIORS &amp; ARCHITECTURE</div>
+      <div>11</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build:profile": "PUPPETEER_SKIP_DOWNLOAD=false npx puppeteer browsers install chrome && node scripts/build-profile.mjs"
   },
   "dependencies": {
     "next": "^14.2.35",
@@ -17,6 +18,8 @@
     "@types/node": "20.14.10",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
+    "pdf-lib": "^1.17.1",
+    "puppeteer": "^25.1.0",
     "typescript": "5.5.3"
   }
 }

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Eyebrow, Italic } from "@/components/ui";
 import { IconArrow, IconQuote } from "@/components/icons";
@@ -33,8 +34,14 @@ export default function CompaniesPage() {
             </div>
           </div>
           <div className="pic">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/assets/portfolio/shot-04.png" alt="مشروع تجاري" />
+            <Image
+              src="/assets/portfolio/shot-04.png"
+              alt="تصميم داخلي لمشروع تجاري فاخر"
+              fill
+              priority
+              className="fill-img"
+              sizes="(max-width: 900px) 100vw, 48vw"
+            />
           </div>
         </div>
       </section>
@@ -85,8 +92,7 @@ export default function CompaniesPage() {
         <div className="show-grid">
           <div style={{ gridColumn: "span 7" }}>
             <div className="tile-img" style={{ aspectRatio: "16/10" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/assets/portfolio/01.png" alt="" />
+              <Image src="/assets/portfolio/01.png" alt="مدخل برج سكني" fill className="fill-img" sizes="(max-width: 800px) 100vw, 58vw" />
             </div>
             <div className="tile-meta">
               <div>
@@ -98,8 +104,7 @@ export default function CompaniesPage() {
           </div>
           <div style={{ gridColumn: "span 5" }}>
             <div className="tile-img" style={{ aspectRatio: "4/5" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/assets/portfolio/07.png" alt="" />
+              <Image src="/assets/portfolio/07.png" alt="منتجع اللوز — تصميم ضيافة" fill className="fill-img" sizes="(max-width: 800px) 100vw, 38vw" />
             </div>
             <div className="tile-meta">
               <div>
@@ -136,15 +141,15 @@ export default function CompaniesPage() {
       <section className="shell">
         <div className="pull">
           <div className="pull-side">
-            <Eyebrow>شريك تطوير</Eyebrow>
+            <Eyebrow>التزامنا</Eyebrow>
             <div style={{ marginTop: 32, color: "var(--accent)" }}><IconQuote size={36} /></div>
             <div style={{ marginTop: 56 }}>
-              <div className="name">المهندسة لينا الحربي</div>
-              <div className="role">مدير مشاريع، شركة تطوير عقاري</div>
+              <div className="name">منهجية رُواء</div>
+              <div className="role">في العمل مع الشركات</div>
             </div>
           </div>
           <div className="pull-quote">
-            «فريق رُواء سلّموا ملف التصميم في الموعد وبدقة عالية، وتوفروا مع مقاولنا لحل تفاصيل التنفيذ أولاً بأول. هذا الانضباط نادر في السوق.»
+            «نسلّم ملف التصميم في موعده وبدقّة عالية، ونتوفّر مع مقاولكم لحلّ تفاصيل التنفيذ أولاً بأول. الانضباط عندنا ليس ميزة إضافية — هو أصل العمل.»
           </div>
         </div>
       </section>

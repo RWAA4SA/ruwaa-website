@@ -1,9 +1,17 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Eyebrow, Italic, Marquee } from "@/components/ui";
 import { IconArrow, IconQuote } from "@/components/icons";
-import { PROCESS_STEPS, PROJECTS } from "@/lib/data";
+import { PROCESS_STEPS, PROJECTS, SERVICES } from "@/lib/data";
 
 const TILE_SPANS = [7, 5, 5, 7];
+
+const DISCIPLINES = [
+  "التصميم الداخلي",
+  "التخطيط المعماري",
+  "التصور ثلاثي الأبعاد",
+  "الإشراف التنفيذي",
+];
 
 export default function HomePage() {
   const featured = PROJECTS.slice(0, 4);
@@ -14,10 +22,10 @@ export default function HomePage() {
       <section className="shell">
         <div className="hero-grid">
           <div className="hero-text">
-            <Eyebrow>استوديو تصميم داخلي · منذ ٢٠١٦</Eyebrow>
+            <Eyebrow>استوديو تصميم داخلي · جدة والمدينة المنورة</Eyebrow>
             <h1 className="h-display">
               مساحات<br />
-              <Italic>تروى عنها</Italic> قصة.
+              <Italic>تُروى عنها</Italic> قصة.
             </h1>
             <p className="body-lg lede">
               نصمّم مساحات داخلية للمطورين، الشركات، والأفراد في جدة والمدينة المنورة —
@@ -32,24 +40,29 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
-          <div className="hero-image">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/assets/portfolio/05.png" alt="فيلا المرمر" />
+          <Link href="/portfolio/villa-marble" className="hero-image" aria-label="فيلا المرمر — جدة">
+            <Image
+              src="/assets/portfolio/05.png"
+              alt="تصميم داخلي لصالة فيلا المرمر في جدة"
+              fill
+              priority
+              className="fill-img"
+              sizes="(max-width: 900px) 100vw, 48vw"
+            />
             <div className="hero-tag">
-              <span>VILLA · RIYADH</span>
+              <span>MARBLE VILLA · JEDDAH</span>
               <span>2025</span>
             </div>
-          </div>
+          </Link>
         </div>
       </section>
 
-      {/* Metrics strip */}
+      {/* Disciplines strip */}
       <section className="shell">
         <div className="hero-strip">
-          <div><div className="num">١٢٠+</div><div className="lab">مشروع مصمّم</div></div>
-          <div><div className="num">٤٨</div><div className="lab">عميل مؤسسي</div></div>
-          <div><div className="num">١٤٠ ألف</div><div className="lab">م² مصممة</div></div>
-          <div><div className="num">٩</div><div className="lab">سنوات خبرة</div></div>
+          {DISCIPLINES.map((d) => (
+            <div key={d}><div className="num" style={{ fontSize: 20 }}>{d}</div></div>
+          ))}
         </div>
       </section>
 
@@ -69,7 +82,7 @@ export default function HomePage() {
       <section className="sec shell">
         <div className="section-head">
           <div>
-            <Eyebrow>للمن نعمل</Eyebrow>
+            <Eyebrow>لمن نعمل</Eyebrow>
             <h2 className="h-1" style={{ marginTop: 16 }}>
               طريقان مختلفان<br />تحت سقف واحد.
             </h2>
@@ -129,7 +142,7 @@ export default function HomePage() {
           </div>
           <div style={{ display: "grid", gap: 16, justifyItems: "start" }}>
             <p className="body-lg lead">
-              ست عشرة سنة من التصميم — ست خامات تتكرر، ست قصص. هذه أربع منها.
+              مساحات سكنية وضيافة وتجارية، تجمعها لغة واحدة: الهدوء، والخامة، والتفصيل.
             </p>
             <Link href="/portfolio" className="btn-arrow">
               كل الأعمال <IconArrow size={14} />
@@ -146,8 +159,13 @@ export default function HomePage() {
               style={{ gridColumn: `span ${TILE_SPANS[i] || 6}` }}
             >
               <div className="tile-img">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={p.cover} alt={p.title} />
+                <Image
+                  src={p.cover}
+                  alt={`${p.title} — ${p.catEn}`}
+                  fill
+                  className="fill-img"
+                  sizes="(max-width: 800px) 100vw, 50vw"
+                />
               </div>
               <div className="tile-meta">
                 <div>
@@ -157,6 +175,32 @@ export default function HomePage() {
                 <div className="t-yr">{p.year} · {p.location}</div>
               </div>
             </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Services teaser */}
+      <section className="shell sec-tight">
+        <div className="section-head">
+          <div>
+            <Eyebrow>خدماتنا</Eyebrow>
+            <h2 className="h-1" style={{ marginTop: 16 }}>خدمة كاملة<br />من الفكرة للتسليم.</h2>
+          </div>
+          <div style={{ display: "grid", gap: 16, justifyItems: "start" }}>
+            <p className="body-lg lead">
+              تصميم داخلي، تخطيط معماري، تصور ثلاثي الأبعاد، ومخططات تنفيذية — كل ما يحتاجه مشروعك في فريق واحد.
+            </p>
+            <Link href="/services" className="btn-arrow">
+              كل الخدمات <IconArrow size={14} />
+            </Link>
+          </div>
+        </div>
+        <div className="svc-list-grid">
+          {SERVICES.flatMap((g) => g.items).slice(0, 9).map((it) => (
+            <div className="svc-item" key={it.en}>
+              <div className="t">{it.t}</div>
+              <div className="en">{it.en}</div>
+            </div>
           ))}
         </div>
       </section>
@@ -185,35 +229,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Quote */}
+      {/* Brand statement */}
       <section className="shell">
         <div className="pull">
           <div className="pull-side">
-            <Eyebrow>كلمة عميل</Eyebrow>
+            <Eyebrow>فلسفتنا</Eyebrow>
             <div style={{ marginTop: 32, color: "var(--accent)" }}><IconQuote size={36} /></div>
             <div style={{ marginTop: 56 }}>
-              <div className="name">المهندس عبد الله الراشد</div>
-              <div className="role">مدير تطوير، شركة المركز للتطوير</div>
+              <div className="name">رُواء</div>
+              <div className="role">استوديو تصميم داخلي</div>
             </div>
           </div>
           <div className="pull-quote">
-            «سلّمت رُواء أربعة أبراج سكنية بنفس الجودة التي تسلّم بها فيلا واحدة. هذا تحديداً ما يصعب إيجاده في السوق.»
+            «نصمّم المكان ليُروى، لا ليُملأ. الفخامة الحقيقية هدوء، وتفصيل، وخامة تصدق مع الزمن.»
           </div>
-        </div>
-      </section>
-
-      {/* Logos */}
-      <section className="shell sec-tight">
-        <div className="section-head">
-          <div>
-            <Eyebrow>شركاء وعملاء</Eyebrow>
-            <h2 className="h-2" style={{ marginTop: 16 }}>نعمل مع من يبني المدينة.</h2>
-          </div>
-        </div>
-        <div className="logos">
-          {["AL MARKAZ", "DAR AL ARKAN", "ROSHN", "ALMOND RESORT", "RED SEA CO.", "DIRIYAH GATE", "KHOZAM", "AMAALA", "NEOM", "RUA AL MADINAH", "SOLIDERE", "KAFD"].map((n) => (
-            <div className="logo-cell" key={n}>{n}</div>
-          ))}
         </div>
       </section>
 

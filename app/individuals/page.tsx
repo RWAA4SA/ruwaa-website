@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Eyebrow, Italic } from "@/components/ui";
 import { IconArrow, IconQuote } from "@/components/icons";
@@ -33,8 +34,14 @@ export default function IndividualsPage() {
             </div>
           </div>
           <div className="pic">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/assets/portfolio/02.png" alt="مساحة سكنية" />
+            <Image
+              src="/assets/portfolio/02.png"
+              alt="تصميم داخلي لمساحة سكنية"
+              fill
+              priority
+              className="fill-img"
+              sizes="(max-width: 900px) 100vw, 48vw"
+            />
           </div>
         </div>
       </section>
@@ -80,20 +87,17 @@ export default function IndividualsPage() {
         <div className="show-grid">
           <div style={{ gridColumn: "span 6" }}>
             <div className="tile-img" style={{ aspectRatio: "4/5" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/assets/portfolio/05.png" alt="" />
+              <Image src="/assets/portfolio/05.png" alt="تصميم صالة سكنية" fill className="fill-img" sizes="(max-width: 800px) 100vw, 50vw" />
             </div>
           </div>
           <div style={{ gridColumn: "span 6" }}>
             <div className="tile-img" style={{ aspectRatio: "4/5" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/assets/portfolio/02.png" alt="" />
+              <Image src="/assets/portfolio/02.png" alt="تصميم غرفة معيشة" fill className="fill-img" sizes="(max-width: 800px) 100vw, 50vw" />
             </div>
           </div>
           <div style={{ gridColumn: "span 12" }}>
             <div className="tile-img" style={{ aspectRatio: "21/9" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/assets/portfolio/06.png" alt="" />
+              <Image src="/assets/portfolio/06.png" alt="تفاصيل تصميم داخلي" fill className="fill-img" sizes="100vw" />
             </div>
           </div>
         </div>
@@ -125,15 +129,15 @@ export default function IndividualsPage() {
       <section className="shell">
         <div className="pull">
           <div className="pull-side">
-            <Eyebrow>تجربة شخصية</Eyebrow>
+            <Eyebrow>وعدنا لك</Eyebrow>
             <div style={{ marginTop: 32, color: "var(--accent)" }}><IconQuote size={36} /></div>
             <div style={{ marginTop: 56 }}>
-              <div className="name">د. سارة العتيبي</div>
-              <div className="role">عميلة — فيلا في حي الياسمين</div>
+              <div className="name">منهجية رُواء</div>
+              <div className="role">في العمل مع الأفراد</div>
             </div>
           </div>
           <div className="pull-quote">
-            «شعرت طوال المشروع أنّي أشتغل مع صديقة لها ذوقي، لا مع استوديو يحاول إقناعي بذوقه.»
+            «نصمّم بيتاً يشبهك أنت، لا يشبه ذوقنا. نُنصت أولاً، ثم نترجم أسلوب حياتك إلى مساحة تشعر فيها أنك في مكانك.»
           </div>
         </div>
       </section>

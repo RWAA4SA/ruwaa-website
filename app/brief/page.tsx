@@ -1,11 +1,13 @@
 "use client";
 
 import { useState, useEffect, Suspense } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Eyebrow } from "@/components/ui";
 import { IconArrow, IconCheck } from "@/components/icons";
 import { submitRequest } from "@/lib/supabase";
+import { SITE } from "@/lib/site";
 
 type AudienceType = "company" | "individual" | "";
 
@@ -121,7 +123,7 @@ function BriefForm() {
           <div className="check"><IconCheck size={26} /></div>
           <h2 className="h-1" style={{ margin: 0 }}>وصلتنا رسالتك.</h2>
           <p className="body-lg" style={{ margin: 0, maxWidth: 480 }}>
-            سنرد خلال يومي عمل على {form.email}. لو الموضوع عاجل، اتصل على +966 11 000 0000.
+            سنرد خلال يومي عمل على {form.email}. لو الموضوع عاجل، تواصل معنا على واتساب {SITE.phone}.
           </p>
           <div style={{ display: "flex", gap: 12, marginTop: 16 }}>
             <Link href="/" className="btn btn-primary">الرئيسية</Link>
@@ -146,8 +148,13 @@ function BriefForm() {
               املأ النموذج وسنرسل لك تصوراً مبدئياً وميزانية أولية خلال ثلاثة أيام عمل.
             </p>
             <div className="pic">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/assets/portfolio/03.png" alt="" />
+              <Image
+                src="/assets/portfolio/03.png"
+                alt="تصميم داخلي من أعمال رُواء"
+                fill
+                className="fill-img"
+                sizes="(max-width: 900px) 100vw, 42vw"
+              />
             </div>
           </div>
 

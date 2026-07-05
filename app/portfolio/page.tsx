@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Eyebrow } from "@/components/ui";
 import { PROJECTS } from "@/lib/data";
@@ -59,8 +60,13 @@ export default function PortfolioPage() {
               style={{ gridColumn: `span ${SPANS[i % SPANS.length]}` }}
             >
               <div className="tile-img">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={p.cover} alt={p.title} />
+                <Image
+                  src={p.cover}
+                  alt={`${p.title} — ${p.catEn}`}
+                  fill
+                  className="fill-img"
+                  sizes="(max-width: 800px) 100vw, 50vw"
+                />
               </div>
               <div className="tile-meta">
                 <div>

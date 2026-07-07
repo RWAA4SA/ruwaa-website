@@ -1,11 +1,13 @@
 "use client";
 
 import { useState, useEffect, Suspense } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Eyebrow } from "@/components/ui";
 import { IconArrow, IconCheck } from "@/components/icons";
 import { submitRequest } from "@/lib/supabase";
+import { SITE, whatsappLink } from "@/lib/site";
 
 type AudienceType = "company" | "individual" | "";
 
@@ -69,6 +71,25 @@ function BriefForm() {
     return parts.join("\n");
   };
 
+  // نص واتساب كامل — يُستخدم كبديل مضمون إن تعذّر الحفظ التلقائي.
+  const buildWhatsappText = (f: FormState) =>
+    [
+      "السلام عليكم، أرغب في بدء مشروع مع رُواء.",
+      "",
+      `الاسم: ${f.name}`,
+      f.org ? `الجهة: ${f.org}` : "",
+      `النوع: ${f.type === "company" ? "شركة / مطوّر" : "فرد / عائلة"}`,
+      f.project.length ? `نوع المشروع: ${f.project.join("، ")}` : "",
+      f.location ? `الموقع: ${f.location}` : "",
+      f.area ? `المساحة: ${f.area}` : "",
+      f.timeline ? `الجدول الزمني: ${f.timeline}` : "",
+      f.email ? `البريد: ${f.email}` : "",
+      f.phone ? `الجوال: ${f.phone}` : "",
+      f.note ? `ملاحظات: ${f.note}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
+
   const handleSubmit = async () => {
     if (!canNext() || submitting) return;
     setSubmitting(true);
@@ -121,7 +142,7 @@ function BriefForm() {
           <div className="check"><IconCheck size={26} /></div>
           <h2 className="h-1" style={{ margin: 0 }}>وصلتنا رسالتك.</h2>
           <p className="body-lg" style={{ margin: 0, maxWidth: 480 }}>
-            سنرد خلال يومي عمل على {form.email}. لو الموضوع عاجل، اتصل على +966 11 000 0000.
+            سنرد خلال يومي عمل على {form.email}. لو الموضوع عاجل، تواصل معنا على واتساب {SITE.phone}.
           </p>
           <div style={{ display: "flex", gap: 12, marginTop: 16 }}>
             <Link href="/" className="btn btn-primary">الرئيسية</Link>
@@ -146,8 +167,13 @@ function BriefForm() {
               املأ النموذج وسنرسل لك تصوراً مبدئياً وميزانية أولية خلال ثلاثة أيام عمل.
             </p>
             <div className="pic">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/assets/portfolio/03.png" alt="" />
+              <Image
+                src="/assets/portfolio/03.png"
+                alt="تصميم داخلي من أعمال رُواء"
+                fill
+                className="fill-img"
+                sizes="(max-width: 900px) 100vw, 42vw"
+              />
             </div>
           </div>
 
@@ -330,9 +356,30 @@ function BriefForm() {
               )}
             </div>
             {submitError && (
-              <p className="hint" style={{ color: "#c0392b", marginTop: 12 }}>
-                {submitError}
-              </p>
+              <div
+                style={{
+                  marginTop: 20,
+                  padding: 20,
+                  border: "1px solid var(--line)",
+                  borderRadius: "var(--radius-lg)",
+                  background: "var(--paper)",
+                  display: "grid",
+                  gap: 12,
+                }}
+              >
+                <p className="hint" style={{ margin: 0, color: "var(--ink-2)" }}>
+                  تعذّر الإرسال التلقائي الآن. أرسل طلبك مباشرة عبر واتساب — كل بياناتك جاهزة بضغطة.
+                </p>
+                <a
+                  href={whatsappLink(buildWhatsappText(form))}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+                  style={{ width: "max-content" }}
+                >
+                  أكمل عبر واتساب <IconArrow size={14} />
+                </a>
+              </div>
             )}
           </div>
         </div>

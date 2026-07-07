@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Eyebrow } from "@/components/ui";
@@ -26,8 +27,14 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
   return (
     <main className="page-fade">
       <div className="cs-hero">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={p.cover} alt={p.title} />
+        <Image
+          src={p.cover}
+          alt={`${p.title} — ${p.catEn} · ${p.location}`}
+          fill
+          priority
+          className="fill-img"
+          sizes="100vw"
+        />
         <div className="overlay" />
         <div className="cs-cap">
           <h1>{p.title}</h1>
@@ -60,8 +67,13 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
         <div className="cs-gallery">
           {p.images.map((g, i) => (
             <div key={i} className={"g span-" + g.span}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={g.src} alt="" />
+              <Image
+                src={g.src}
+                alt={`${p.title} — لقطة ${i + 1}`}
+                fill
+                className="fill-img"
+                sizes="(max-width: 800px) 100vw, 100vw"
+              />
             </div>
           ))}
         </div>

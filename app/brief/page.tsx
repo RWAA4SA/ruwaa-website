@@ -7,7 +7,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Eyebrow } from "@/components/ui";
 import { IconArrow, IconCheck } from "@/components/icons";
 import { submitRequest } from "@/lib/supabase";
-import { SITE } from "@/lib/site";
+import { SITE, whatsappLink } from "@/lib/site";
 
 type AudienceType = "company" | "individual" | "";
 
@@ -70,6 +70,25 @@ function BriefForm() {
     if (f.note) parts.push(`ملاحظات: ${f.note}`);
     return parts.join("\n");
   };
+
+  // نص واتساب كامل — يُستخدم كبديل مضمون إن تعذّر الحفظ التلقائي.
+  const buildWhatsappText = (f: FormState) =>
+    [
+      "السلام عليكم، أرغب في بدء مشروع مع رُواء.",
+      "",
+      `الاسم: ${f.name}`,
+      f.org ? `الجهة: ${f.org}` : "",
+      `النوع: ${f.type === "company" ? "شركة / مطوّر" : "فرد / عائلة"}`,
+      f.project.length ? `نوع المشروع: ${f.project.join("، ")}` : "",
+      f.location ? `الموقع: ${f.location}` : "",
+      f.area ? `المساحة: ${f.area}` : "",
+      f.timeline ? `الجدول الزمني: ${f.timeline}` : "",
+      f.email ? `البريد: ${f.email}` : "",
+      f.phone ? `الجوال: ${f.phone}` : "",
+      f.note ? `ملاحظات: ${f.note}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
 
   const handleSubmit = async () => {
     if (!canNext() || submitting) return;
@@ -337,9 +356,30 @@ function BriefForm() {
               )}
             </div>
             {submitError && (
-              <p className="hint" style={{ color: "#c0392b", marginTop: 12 }}>
-                {submitError}
-              </p>
+              <div
+                style={{
+                  marginTop: 20,
+                  padding: 20,
+                  border: "1px solid var(--line)",
+                  borderRadius: "var(--radius-lg)",
+                  background: "var(--paper)",
+                  display: "grid",
+                  gap: 12,
+                }}
+              >
+                <p className="hint" style={{ margin: 0, color: "var(--ink-2)" }}>
+                  تعذّر الإرسال التلقائي الآن. أرسل طلبك مباشرة عبر واتساب — كل بياناتك جاهزة بضغطة.
+                </p>
+                <a
+                  href={whatsappLink(buildWhatsappText(form))}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+                  style={{ width: "max-content" }}
+                >
+                  أكمل عبر واتساب <IconArrow size={14} />
+                </a>
+              </div>
             )}
           </div>
         </div>
